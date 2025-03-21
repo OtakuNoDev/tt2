@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Tutor - Sign In</title>
+    <link rel="stylesheet" href="signin.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Typing Tutor Heading -->
+<h1 style="position: absolute; top: 10px; left: 20px; font-size: 24px; font-family: Arial, sans-serif; margin: 0;">Typing Tutor</h1>
+
+<!-- Navigation Bar -->
+<header style="margin-top: 40px;">
+    <nav>
+        <ul>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="typingtest.html">⌨ Typing Test</a></li>
+            <li><a href="practice.html">📖 Practice</a></li>
+            <li><a href="profile.html">👤 Profile</a></li>
+            <li><a href="signin.html" class="active">🔑 Sign In</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="sign-in-container">
+        <h2 style="color: black;">Sign In</h2>
+        <form id="signin-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Continue</button>
+        </form>
+        <p>Don't have an account? <a href="#">Sign Up</a></p>
+        <div class="social-auth">
+            <a href="#" class="google-signin">Sign in with Google</a>
+            <a href="#" class="outlook-signin">Sign in with Outlook</a>
+            <a href="#" class="email-signin">Sign in with Email</a>
+        </div>
+    </div>
+</main>
+
+<script src="signin.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+
+</html>
