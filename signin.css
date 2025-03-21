@@ -1,15 +1,17 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: linear-gradient(#0f0f0f, #1a1a2e, #16213e); /* Gradient applied */
     margin: 0;
     padding: 0;
 }
 
+/* Sign-in Container */
 .sign-in-container {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color:  #2d3e50;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -19,6 +21,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* Form Styling */
 .sign-in-container form {
     display: flex;
     flex-direction: column;
@@ -32,6 +35,7 @@ body {
     border-radius: 4px;
 }
 
+/* Button Styling */
 .sign-in-container button {
     padding: 10px;
     font-size: 16px;
@@ -46,6 +50,7 @@ body {
     background-color: #0056b3;
 }
 
+/* Social Authentication */
 .social-auth {
     text-align: center;
     margin-top: 20px;
@@ -61,6 +66,7 @@ body {
     text-decoration: none;
 }
 
+/* Google & Outlook Sign-in */
 .google-signin {
     background-color: #db4437;
 }

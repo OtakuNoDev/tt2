@@ -2,59 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing Test</title>
-    <link rel="stylesheet" href="navbar.css">
+    <title>Speed Typing Game</title>
     <link rel="stylesheet" href="typingtest.css">
-    <script defer src="typingtest.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="typingtest.js" defer></script>
 </head>
 <body>
+    <h1 style="position: absolute; top: 10px; left: 20px; font-size: 24px; font-family: Arial, sans-serif; margin: 0; color: white;">Typing Tutor</h1>
 
-<!-- Typing Tutor Heading -->
-<h1 style="position: absolute; top: 10px; left: 20px; font-size: 24px; font-family: Arial, sans-serif; color: white; margin: 0;">Typing Tutor</h1>
-
-<!-- Navigation Bar -->
-<header style="margin-top: 40px;">
-    <nav>
-        <ul>
-            <li><a href="index.html">🏠 Home</a></li>
-            <li><a href="typingtest.html" class="active">⌨ Typing Test</a></li>
-            <li><a href="practice.html">📖 Practice</a></li>
-            <li><a href="profile.html">👤 Profile</a></li>
-            <li><a href="signin.html">🔑 Sign In</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- Typing Area -->
-<div class="container">
-    <h1>🖊 Typing Test</h1>
-
-    <div class="stats">
-        <p id="timer">Time: 0s</p>
-        <p id="accuracy">Accuracy: 100%</p>
-        <p id="speed">Speed: 0 WPM</p>
+    <header style="margin-top: 40px;">
+       
+        <nav>
+            <ul>
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="typingtest.html">⌨ Typing Test</a></li>
+                <li><a href="practice.html">📖 Practice</a></li>
+                <li><a href="profile.html" class="active">👤 Profile</a></li>
+                <li><a href="signin.html">🔑 Sign In</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle">
+            <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
+    </header>
+    <div class="wrapper">
+        <input type="text" class="input-field">
+        <div class="content-box">
+            <div class="typing-text">
+                <p id="paragraph"></p>
+            </div>
+            <div class="content">
+                <ul class="result-details">
+                    <li class="time">
+                        <p>
+                            Time Left:
+                        </p>
+                        <span><b>60</b>s</span>
+                    </li>
+                    <li class="mistake">
+                        <p>
+                            Mistakes:
+                        </p>
+                        <span>0</span>
+                    </li>
+                    <li class="wpm">
+                        <p>
+                            WPM:
+                        </p>
+                        <span>0</span>
+                    </li>
+                    <li class="cpm">
+                        <p>
+                            CPM:
+                        </p>
+                        <span>0</span>
+                    </li>
+                </ul>
+                <button>Try Again</button>
+            </div>
+        </div>
     </div>
-
-    <div id="text-container">
-        <p id="sentence"></p>
-    </div>
-
-    <input type="text" id="input-box" placeholder="Start typing here..." autofocus>
-
-    <!-- On-screen Keyboard -->
-    <div id="keyboard-container"></div>
-
-    <!-- Results Section -->
-    <div id="result" class="hidden">
-        <h2>📊 Results</h2>
-        <p id="final-speed"></p>
-        <p id="final-accuracy"></p>
-        <button id="restart">🔄 Try Again</button>
-    </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>

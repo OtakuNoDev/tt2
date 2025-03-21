@@ -1,110 +1,115 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #1e1e1e;
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#0f0f0f, #1a1a2e, #16213e); /* Gradient applied */
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Profile Container with Slide-Up Animation */
+.profile-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #292929;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  text-align: left;
+  transform: translateY(50px);
+  animation: slideUp 1s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from { 
+      opacity: 0; 
+      transform: translateY(80px); 
   }
-  
-  /* Profile Container with Slide-Up Animation */
-  .profile-container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #292929;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    text-align: left;
-    transform: translateY(50px);
-    animation: slideUp 1s ease-out forwards;
+  to { 
+      opacity: 1; 
+      transform: translateY(0); 
   }
-  
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(80px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* Form Grouping & Row Layout */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-row {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .form-row .form-group {
-    flex: 1;
-  }
-  
-  /* Form Labels */
-  form label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 5px;
-    color: #ddd;
-  }
-  
-  /* Input & Select Styling with Focus Effects */
-  form input, form select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #444;
-    color: white;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-  }
-  
-  form input:focus, form select:focus {
-    outline: none;
-    background-color: #444;
-    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
-    transform: translateY(-3px);
-  }
-  
-  /* Fieldset for Personal Goals */
-  .goals-fieldset {
-    border: 1px solid #555;
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 20px;
-    background-color: #292929;
-  }
-  
-  .goals-fieldset legend {
-    font-size: 18px;
-    padding: 0 10px;
-    color: #ddd;
-  }
-  
-  /* Save Button with 3D Hover Effect */
-  button#save-changes {
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    font-size: 18px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  button#save-changes:hover {
-    background: #0056b3;
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-  }
-  
-  button#save-changes:active {
-    transform: translateY(0) scale(1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  }
-  
+}
+
+/* Form Grouping & Row Layout */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Form Labels */
+form label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #ddd;
+}
+
+/* Input & Select Styling with Focus Effects */
+form input, form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: white;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+form input:focus, form select:focus {
+  outline: none;
+  background-color: #444;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Fieldset for Personal Goals */
+.goals-fieldset {
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: #292929;
+}
+
+.goals-fieldset legend {
+  font-size: 18px;
+  padding: 0 10px;
+  color: #ddd;
+}
+
+/* Save Button with 3D Hover Effect */
+button#save-changes {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 18px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button#save-changes:hover {
+  background: #0056b3;
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+button#save-changes:active {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
