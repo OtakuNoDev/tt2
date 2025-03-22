@@ -26,92 +26,107 @@ Welcome to the Typing Tutor project! This project is designed to enhance typing 
 ## Usage
 
 ```c
-#include <SoftwareSerial.h>
-#include <TinyGPS++.h>
-#include <ESP8266WiFi.h>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typing Tutor - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Typing Tutor Heading -->
+  <h1 class="site-title">Typing Tutor</h1>
 
-#define RX_PIN 4  // GPS TX to ESP8266 RX (GPIO 4)
-#define TX_PIN 5  // ESP8266 TX to GPS RX (GPIO 3, usually not used)
+  <!-- Navigation Bar -->
+  <header class="main-header">
+    <nav>
+        <!-- <h1 class="site-title">Typing Tutor</h1> -->
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="typingtest.html">⌨ Typing Test</a></li>
+        <li><a href="practice.html">📖 Practice</a></li>
+        <li><a href="profile.html">👤 Profile</a></li>
+        <li><a href="signin.html">🔑 Sign In</a></li>
+      </ul>
+    </nav>
+  </header>
 
-// Wi-Fi credentials
-const char* ssid = "SSID";        // Replace with your Wi-Fi SSID
-const char* password = "PASSWORD"; // Replace with your Wi-Fi password
+  <!-- Hero Section with 3D Background Layers -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Master Your Typing Skills</h1>
+      <p>Improve your speed and accuracy with interactive typing lessons.</p>
+      <a href="typingtest.html" class="btn">Start your Typing Test</a>
+    </div>
+  </section>
 
-// Create a SoftwareSerial object
-SoftwareSerial GPS_SoftSerial(RX_PIN, TX_PIN);
-TinyGPSPlus gps;
-WiFiServer server(80); // Create a web server on port 80
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature">
+      <h2>🎯 Accuracy Training</h2>
+      <p>Enhance your typing accuracy with fun, challenging exercises.</p>
+    </div>
+    <div class="feature">
+      <h2>🚀 Speed Boost</h2>
+      <p>Increase your words per minute with dynamic challenges and 3D animations.</p>
+    </div>
+    <div class="feature">
+      <h2>📊 Progress Tracking</h2>
+      <p>Monitor your improvement with detailed analytics and interactive dashboards.</p>
+    </div>
+  </section>
 
-void setup() {
-    Serial.begin(115200);           // Start Serial Monitor
-    WiFi.begin(ssid, password);     // Connect to Wi-Fi
+  <!-- About Section -->
+  <section class="about">
+    <h2>About Typing Tutor</h2>
+    <p>
+      Typing Tutor is dedicated to helping you become a fast and accurate typist.
+      With engaging lessons, real-time feedback, and immersive 3D effects, you'll enjoy every step of your journey to master the keyboard.
+    </p>
+  </section>
 
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(1000);
-        Serial.println("🌐 Connecting to WiFi...");
-    }
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial-container">
+      <div class="testimonial">
+        <p>"This site transformed the way I type! The animations make learning fun and engaging."</p>
+        <span>- Alex</span>
+      </div>
+      <div class="testimonial">
+        <p>"I love the progress tracking dashboard. It motivates me to beat my personal records."</p>
+        <span>- Jamie</span>
+      </div>
+      <div class="testimonial">
+        <p>"The 3D effects and smooth animations create an immersive learning experience."</p>
+        <span>- Morgan</span>
+      </div>
+    </div>
+  </section>
 
-    Serial.println("✅ Connected to WiFi");
-    server.begin();                 // Start the server
-    Serial.println("🚀 Server started");
-    GPS_SoftSerial.begin(9600);     // Start SoftwareSerial for GPS
-}
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Get In Touch</h2>
+    <p>Have any questions or suggestions? Contact us at <a href="mailto:support@typingtutor.com">support@typingtutor.com</a></p>
+  </section>
 
-void loop() {
-    while (GPS_SoftSerial.available()) {
-        gps.encode(GPS_SoftSerial.read());
-        if (gps.location.isUpdated()) {
-            double latitude = gps.location.lat();
-            double longitude = gps.location.lng();
-            String url = "http://maps.google.com/?q=" + String(latitude, 6) + "," + String(longitude, 6);
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Typing Tutor. All rights reserved.</p>
+  </footer>
 
-            // Print location details to Serial Monitor with emojis
-            Serial.println("📍 Location Updated:");
-            Serial.print("   🗺️ Latitude: ");
-            Serial.println(latitude, 6);
-            Serial.print("   🗺️ Longitude: ");
-            Serial.println(longitude, 6);
-            Serial.println("🔗 Google Maps Link: " + url);
-
-            // Handle client connections
-            WiFiClient client = server.available();
-            if (client) {
-                Serial.println("🌟 New client connected");
-                String response = "HTTP/1.1 302 Found\r\n";
-                response += "Location: " + url + "\r\n";
-                response += "Connection: close\r\n";
-                response += "\r\n";
-                client.print(response);
-                delay(100); // Give the client time to receive the data
-                client.stop(); // Close the connection
-                Serial.println("👋 Client disconnected");
-            }
-        }
-    }
-}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>
 
 ```
 
-This code retrieves GPS coordinates and sends them to the serial monitor or a connected web interface.
-
----
-
-## Local Development
-
-This local development setup is for testing and running the GPS tracking system on your ESP8266 module.
-
-### Steps
-
-1. **Install dependencies:**
-   ```bash
-   arduino-cli core install esp8266:esp8266
-   ```
-
-2. **Upload to ESP8266:**
-   Open the `.ino` file in Arduino IDE, connect the ESP8266, and upload the code.
-
-3. **Test the output:**
-   Use a serial monitor to view the GPS coordinates in real time.
+This code runs the website of typing tutor.
 
 ---
 
@@ -132,22 +147,6 @@ We welcome contributions! Feel free to fork this repository and submit a pull re
           <sub><b>Gaurav Jadhav</b></sub>
         </a>
       </td>
-      <td align="center">
-        <a href="https://github.com/Yash-codes2024">
-          <img src="https://github.com/Yash-codes2024.png" width="100px" style="border-radius: 50%;" alt="Shreyash Mandlapure"/><br />
-          <sub><b>Shreyash Mandlapure</b></sub>
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/Vinit1936">
-          <img src="https://github.com/Vinit1936.png" width="100px" style="border-radius: 50%;" alt="Vinit Patil"/><br />
-          <sub><b>Vinit Patil</b></sub>
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/Sarthakpatil23">
-          <img src="https://github.com/Sarthakpatil23.png" width="100px" style="border-radius: 50%;" alt="Sarthak Patil"/><br />
-          <sub><b>Sarthak Patil</b></sub>
         </a>
       </td>
     </tr>
