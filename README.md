@@ -1,90 +1,162 @@
-# Typing-Tutor
+# GPS Tracking System
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing Tutor - README</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; }
-        h1, h2, h3 { color: #333; }
-        code { background: #f4f4f4; padding: 2px 5px; border-radius: 5px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        table, th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
-        img { border-radius: 50%; width: 80px; }
-    </style>
-</head>
-<body>
-    <h1>Typing Tutor</h1>
-    <p>Welcome to the <strong>Typing Tutor</strong> project! This is an advanced web-based typing tutor designed to improve typing speed and accuracy. It includes multiple learning levels, practice modes, a speed test, typing history, leaderboards, sound effects, and hints.</p>
-    
-    <h2>Features ✨</h2>
-    <ul>
-        <li><strong>Learning Levels:</strong> Progress from beginner to advanced typing challenges.</li>
-        <li><strong>Practice Mode:</strong> Customize your typing exercises with different difficulty levels.</li>
-        <li><strong>Speed Test:</strong> Measure and track your typing speed over time.</li>
-        <li><strong>Typing History:</strong> View your past performance and improve accordingly.</li>
-        <li><strong>Leaderboard:</strong> Compete with other users and track your ranking.</li>
-        <li><strong>Sound Effects & Hints:</strong> Enhance the learning experience with interactive sounds and real-time hints.</li>
-        <li><strong>Dark & Light Theme:</strong> Switch between themes for a comfortable user experience.</li>
-    </ul>
-    
-    <h2>Installation 🛠️</h2>
-    <h3>Prerequisites</h3>
-    <ul>
-        <li>Web browser (Google Chrome, Firefox, Edge, etc.)</li>
-        <li>Code editor (VS Code recommended)</li>
-        <li>Basic knowledge of HTML, CSS, and JavaScript (optional for customization)</li>
-    </ul>
-    
-    <h3>Setup</h3>
-    <pre><code>git clone https://github.com/OtakuNoDev/Typing-Tutor.git
-cd Typing-Tutor</code></pre>
-    <p>Then open <code>index.html</code> in a web browser.</p>
-    
-    <h2>Usage 🚀</h2>
-    <h3>Running the Project</h3>
-    <ul>
-        <li>Open <code>index.html</code> in any browser.</li>
-        <li>Select a mode (Learning, Practice, or Speed Test).</li>
-        <li>Start typing and track your progress!</li>
-    </ul>
-    
-    <h3>Customization</h3>
-    <ul>
-        <li>Modify <code>styles.css</code> to change the theme.</li>
-        <li>Edit <code>script.js</code> to tweak game mechanics.</li>
-    </ul>
-    
-    <h2>File Structure 📁</h2>
-    <pre><code>Typing-Tutor/
-│── index.html         # Main HTML file
-│── css/
-│   ├── styles.css     # Main stylesheet
-│   ├── navbar.css     # Navbar styles
-│── js/
-│   ├── script.js      # Main JavaScript logic
-│   ├── leaderboard.js # Leaderboard functionality
-│── assets/
-│   ├── images/        # Image assets
-│   ├── sounds/        # Sound effects</code></pre>
-    
-    <h2>Contribution 🤝</h2>
-    <p>We welcome contributions! Feel free to fork this repository and submit a pull request.</p>
-    
-    <h2>Contributors ✨</h2>
-    <table>
-        <tr>
-            <td><img src="https://github.com/OtakuNoDev.png" alt="Gaurav Jadhav"/><br/><strong>Gaurav Jadhav</strong></td>
-            <td><img src="https://github.com/Yash-codes2024.png" alt="Shreyash Mandlapure"/><br/><strong>Shreyash Mandlapure</strong></td>
-            <td><img src="https://github.com/Vinit1936.png" alt="Vinit Patil"/><br/><strong>Vinit Patil</strong></td>
-            <td><img src="https://github.com/Sarthakpatil23.png" alt="Sarthak Patil"/><br/><strong>Sarthak Patil</strong></td>
-        </tr>
-    </table>
-    
-    <p>Happy Typing! ⌨️🔥</p>
-</body>
-</html>
+Welcome to the GPS Tracking System project! This project is a real-time GPS location tracking system built using the **ESP8266** microcontroller and the **NEO-6M GPS** module. It showcases how to obtain and display GPS coordinates in real time, and includes an interactive user experience with emojis for better readability and engagement.
 
+## Installation
+
+### Prerequisites
+- Arduino IDE (or any compatible IDE)
+- USB-to-serial adapter or micro-USB cable
+- ESP8266 libraries installed in the Arduino IDE
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/OtakuNoDev/GPS_project.git
+   cd GPS_project
+   ```
+
+2. Install the required libraries in the Arduino IDE:
+   - **Adafruit_GFX Library**
+   - **Adafruit GPS Library**
+   - **ESP8266WiFi Library**
+
+3. Connect the hardware:
+   - NEO-6M GPS module to ESP8266 (using UART pins).
+   - Ensure correct power and ground connections.
+
+4. Open the project in Arduino IDE and upload the code to the ESP8266.
+
+---
+
+## Usage
+
+```c
+#include <SoftwareSerial.h>
+#include <TinyGPS++.h>
+#include <ESP8266WiFi.h>
+
+#define RX_PIN 4  // GPS TX to ESP8266 RX (GPIO 4)
+#define TX_PIN 5  // ESP8266 TX to GPS RX (GPIO 3, usually not used)
+
+// Wi-Fi credentials
+const char* ssid = "SSID";        // Replace with your Wi-Fi SSID
+const char* password = "PASSWORD"; // Replace with your Wi-Fi password
+
+// Create a SoftwareSerial object
+SoftwareSerial GPS_SoftSerial(RX_PIN, TX_PIN);
+TinyGPSPlus gps;
+WiFiServer server(80); // Create a web server on port 80
+
+void setup() {
+    Serial.begin(115200);           // Start Serial Monitor
+    WiFi.begin(ssid, password);     // Connect to Wi-Fi
+
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(1000);
+        Serial.println("🌐 Connecting to WiFi...");
+    }
+
+    Serial.println("✅ Connected to WiFi");
+    server.begin();                 // Start the server
+    Serial.println("🚀 Server started");
+    GPS_SoftSerial.begin(9600);     // Start SoftwareSerial for GPS
+}
+
+void loop() {
+    while (GPS_SoftSerial.available()) {
+        gps.encode(GPS_SoftSerial.read());
+        if (gps.location.isUpdated()) {
+            double latitude = gps.location.lat();
+            double longitude = gps.location.lng();
+            String url = "http://maps.google.com/?q=" + String(latitude, 6) + "," + String(longitude, 6);
+
+            // Print location details to Serial Monitor with emojis
+            Serial.println("📍 Location Updated:");
+            Serial.print("   🗺️ Latitude: ");
+            Serial.println(latitude, 6);
+            Serial.print("   🗺️ Longitude: ");
+            Serial.println(longitude, 6);
+            Serial.println("🔗 Google Maps Link: " + url);
+
+            // Handle client connections
+            WiFiClient client = server.available();
+            if (client) {
+                Serial.println("🌟 New client connected");
+                String response = "HTTP/1.1 302 Found\r\n";
+                response += "Location: " + url + "\r\n";
+                response += "Connection: close\r\n";
+                response += "\r\n";
+                client.print(response);
+                delay(100); // Give the client time to receive the data
+                client.stop(); // Close the connection
+                Serial.println("👋 Client disconnected");
+            }
+        }
+    }
+}
+
+```
+
+This code retrieves GPS coordinates and sends them to the serial monitor or a connected web interface.
+
+---
+
+## Local Development
+
+This local development setup is for testing and running the GPS tracking system on your ESP8266 module.
+
+### Steps
+
+1. **Install dependencies:**
+   ```bash
+   arduino-cli core install esp8266:esp8266
+   ```
+
+2. **Upload to ESP8266:**
+   Open the `.ino` file in Arduino IDE, connect the ESP8266, and upload the code.
+
+3. **Test the output:**
+   Use a serial monitor to view the GPS coordinates in real time.
+
+---
+
+## Contribution
+
+We welcome contributions! Feel free to fork this repository and submit a pull request.
+
+---
+
+## Contributors ✨
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <a href="https://github.com/OtakuNoDev">
+          <img src="https://github.com/OtakuNoDev.png" width="100px" style="border-radius: 50%;" alt="Gaurav Jadhav"/><br />
+          <sub><b>Gaurav Jadhav</b></sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/Yash-codes2024">
+          <img src="https://github.com/Yash-codes2024.png" width="100px" style="border-radius: 50%;" alt="Shreyash Mandlapure"/><br />
+          <sub><b>Shreyash Mandlapure</b></sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/Vinit1936">
+          <img src="https://github.com/Vinit1936.png" width="100px" style="border-radius: 50%;" alt="Vinit Patil"/><br />
+          <sub><b>Vinit Patil</b></sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/Sarthakpatil23">
+          <img src="https://github.com/Sarthakpatil23.png" width="100px" style="border-radius: 50%;" alt="Sarthak Patil"/><br />
+          <sub><b>Sarthak Patil</b></sub>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
