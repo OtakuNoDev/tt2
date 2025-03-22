@@ -1,6 +1,6 @@
-# GPS Tracking System
+# Typing Tutor
 
-Welcome to the GPS Tracking System project! This project is a real-time GPS location tracking system built using the **ESP8266** microcontroller and the **NEO-6M GPS** module. It showcases how to obtain and display GPS coordinates in real time, and includes an interactive user experience with emojis for better readability and engagement.
+Welcome to the Typing Tutor project! This project is designed to enhance typing speed and accuracy through interactive exercises, practice modes, and real-time feedback. It offers multiple difficulty levels, a leaderboard system, and personalized progress tracking to help users improve their typing efficiency.
 
 ## Installation
 
