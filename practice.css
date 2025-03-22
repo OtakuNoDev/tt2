@@ -1,173 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
-
-:root {
-    --bgColor: #333;
-    --textPrimary: #fff;
-    --textSecondary: #666;
-    --primaryColor: #fd4;
-}
-
-/* Apply the linear gradient theme globally */
+/* Global Styles */
 body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(#0f0f0f, #1a1a2e, #16213e);  /* Gradient applied */
-    color: var(--textPrimary);
-    font-size: 1.4rem;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#0f0f0f, #1a1a2e, #16213e); /* Gradient applied */
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 
-/* Center the main content */
-main {
-    width: 600px;
-    margin: 50px auto;
+/* Container Styling */
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #292929;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-h1 {
-    color: var(--primaryColor);
+/* Heading */
+h2 {
+    font-size: 24px;
 }
 
-h1 svg {
-    width: 40px;
-    fill: var(--primaryColor);
+/* Word Display */
+#word-display-container {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-#header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 20px 6px 30px;
+/* Input Box */
+#input-box {
+    width: 80%; /* Adjust width to 80% for better padding */
+    padding: 15px; /* Increase padding for better spacing */
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto; /* Center the input box */
+    display: block; /* Ensure the input box is a block element */
 }
 
-#buttons {
-    text-align: right;
-}
-
-#info {
-    color: var(--primaryColor);
-}
-
-/* Button styling */
-button {
-    background: rgba(255, 255, 255, 0.2);
-    border: 0;
-    color: rgba(255, 255, 255, 0.5);
-    padding: 5px 20px;
+/* Restart Button */
+#restart {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #007BFF;
+    color: white;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
 }
 
-button:hover {
-    background: var(--primaryColor);
-    color: #333;
-    transform: scale(1.05);
+#restart:hover {
+    background: #0056b3;
 }
 
-/* Game container styling */
-div#game {
-    line-height: 35px;
-    height: 105px;
-    overflow: hidden;
-    position: relative;
+/* Correct & Wrong Words */
+.correct {
+    color: #00ff00;
+    font-weight: bold;
 }
 
-div#game:focus {
-    outline: 0;
+.wrong {
+    color: #ff0000;
+    font-weight: bold;
 }
 
-/* Word styling */
-#words {
-    filter: blur(5px);
-    color: var(--textSecondary);
-}
-
-#game:focus #words {
-    filter: blur(0);
-}
-
-/* Error message */
-#focus-error {
-    position: absolute;
-    inset: 0;
-    text-align: center;
-    padding-top: 35px;
-}
-
-#game:focus #focus-error {
-    display: none;
-}
-
-/* Word and letter styling */
-div.word {
-    display: inline-block;
-    font-family: 'Roboto Mono', monospace;
-    margin: 0 5px;
-}
-
-.letter.correct {
-    color: #fff;
-}
-
-.letter.incorrect {
-    color: #f55;
-}
-
-/* Cursor animation */
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-#cursor {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 1.6rem;
-    background: var(--primaryColor);
-    animation: blink 0.3s infinite;
-}
-
-#game:focus #cursor {
-    display: block;
-}
-
-/* Game over styling */
-#game.over #words {
-    opacity: 0.5;
-    filter: blur(0px);
-}
-
-#game.over:focus #cursor {
-    display: none;
-}
-
-#game.over #focus-error {
-    display: none;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    main {
-        width: 90%;
-        margin: 20px auto;
-    }
-    
-    button {
-        padding: 10px 15px;
-    }
-
-    #header {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+/* Current Word Highlight */
+.current {
+    color: #ffff00;
+    font-weight: bold;
+    text-decoration: underline;
 }
