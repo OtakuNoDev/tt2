@@ -5,28 +5,21 @@ Welcome to the Typing Tutor project! This project is designed to enhance typing 
 ## Installation
 
 ### Prerequisites
-- Arduino IDE (or any compatible IDE)
-- USB-to-serial adapter or micro-USB cable
-- ESP8266 libraries installed in the Arduino IDE
+- HTML
+- CSS
+- Javascript
 
 ### Setup
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/OtakuNoDev/GPS_project.git
-   cd GPS_project
+   git clone https://github.com/OtakuNoDev/tt2.git
+   cd tt2
    ```
 
-2. Install the required libraries in the Arduino IDE:
-   - **Adafruit_GFX Library**
-   - **Adafruit GPS Library**
-   - **ESP8266WiFi Library**
+3. Open the project in VS Code (or any preferred IDE).
 
-3. Connect the hardware:
-   - NEO-6M GPS module to ESP8266 (using UART pins).
-   - Ensure correct power and ground connections.
-
-4. Open the project in Arduino IDE and upload the code to the ESP8266.
+4. Run the index.html file in a web browser.
 
 ---
 
